@@ -142,14 +142,14 @@ class CBookCard {
                 }
                 String publisher = scanner.nextLine();
 
-               int year;
+                int year;
                 do {
                     System.out.print("Введите год издания(0-2023): ");
                     while (!scanner.hasNextInt()) {
                         System.out.print("Вы ввели не число. Введите число заново: ");
                         scanner.next();
                     }
-                   year = scanner.nextInt();
+                    year = scanner.nextInt();
                 } while (( year < 0) || ( year > 2023));
                 scanner.nextLine();
 
@@ -165,35 +165,25 @@ class CBookCard {
                 String ISBN = scanner.nextLine();
 
 
-                // Создаем объект и заполняем его поля
-//                CBookCard book = new CBookCard();
-//
-//                book.setAuthor(author);
-//                book.setTitle(title);
-//                book.setPublisher(publisher);
-//                book.setYear(year);
-//                book.setISBN(ISBN);
-
-
                 books[i] = new CBookCard(author, title, publisher, year, ISBN);
 
 
 
                 while (true) {
-                System.out.print("Введите рейтинг (от 0 до 5): ");
-                 if (scanner.hasNextDouble()) {
-                   double  rate = scanner.nextDouble();
-                     books[i].setRate(rate);
-                     if (rate >= 0 && rate <= 5) {
-                        break;
-                     } else {
-                         System.out.println("Рейтинг должен быть от 0 до 5");
-                     }
-                 } else {
-                     System.out.println("Вы ввели не число. Попробуйте еще раз.");
-                     scanner.next();
-                 }
-             }
+                    System.out.print("Введите рейтинг (от 0 до 5): ");
+                    if (scanner.hasNextDouble()) {
+                        double  rate = scanner.nextDouble();
+                        books[i].setRate(rate);
+                        if (rate >= 0 && rate <= 5) {
+                            break;
+                        } else {
+                            System.out.println("Рейтинг должен быть от 0 до 5");
+                        }
+                    } else {
+                        System.out.println("Вы ввели не число. Попробуйте еще раз.");
+                        scanner.next();
+                    }
+                }
             }
             // Вывод списка книг
             // выводим массив книг до сортировки
@@ -203,7 +193,7 @@ class CBookCard {
             for (CBookCard book : books) {
                 System.out.println(book.toString());
             }
-    // сортируем массив по году издания
+            // сортируем массив по году издания
             int g = books.length;
             for (int k = 0; k < g; k++) {
                 for (int j = 1; j < g - k; j++) {
@@ -215,7 +205,7 @@ class CBookCard {
                 }
             }
 
-    // выводим отсортированный
+            // выводим отсортированный
             System.out.println("==============================================================");
             System.out.println("Массив книг после сортировки:");
             for (CBookCard book : books) {
