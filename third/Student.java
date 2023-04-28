@@ -2,15 +2,15 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 class Student implements Comparable<Student> {
-private String name;
-private int group;
-private int[] grades;
+    private String name;
+    private int group;
+    private int[] grades;
 
-public Student(String name, int group, int[] grades){
-    this.name = name;
-    this.group = group;
-    this.grades = grades;
-}
+    public Student(String name, int group, int[] grades){
+        this.name = name;
+        this.group = group;
+        this.grades = grades;
+    }
 
     public String getName() {
         return name;
@@ -53,7 +53,7 @@ public Student(String name, int group, int[] grades){
                 ", average grade = " + getAverageGrade() +
                 '}';
     }
-@Override
+    @Override
     public int compareTo(Student other) {
         return Integer.compare(group, other.group);
     }
