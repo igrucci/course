@@ -1,6 +1,5 @@
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
+
 class Student implements Comparable<Student> {
     private String name;
     private int group;
