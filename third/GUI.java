@@ -195,7 +195,7 @@ public class GUI extends JFrame {
         JMenu fileMenu = new JMenu("Файл");
         menuBar.add(fileMenu);
 
-        // Создание пункта меню
+
         JMenuItem saveItem = new JMenuItem("Сохранить в файл");
         fileMenu.add(saveItem);
 //        JButton saveButton = new JButton("Сохранить");
