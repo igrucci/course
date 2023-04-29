@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class GUI extends JFrame {
     private JTable table;
@@ -198,7 +199,7 @@ public class GUI extends JFrame {
 
         JMenuItem saveItem = new JMenuItem("Сохранить в файл");
         fileMenu.add(saveItem);
-//        JButton saveButton = new JButton("Сохранить");
+
         saveItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Выбор файла для сохранения
@@ -229,32 +230,39 @@ public class GUI extends JFrame {
 
         JMenuItem readItem = new JMenuItem("Прочесть с файла");
         fileMenu.add(readItem);
-        saveItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                int readfile = fileChooser.showSaveDialog(null);
-                if (readfile == JFileChooser.APPROVE_OPTION) {
-                    // Получение выбранного файла
-                    File selectedFile = fileChooser.getSelectedFile();
-//                    try {
-//                        FileWriter writer = new FileWriter(selectedFile);
-//                        writer.write("Фамилия\tГруппа\t        Оценки\n");
-//                        for (Student student : students) {
-//                            writer.write(student.getName() + "    \t   " + student.getGroup() + "    \t   ");
-//                            int[] grades = student.getGrades();
-//                            for (int i = 0; i < grades.length; i++) {
-//                                writer.write(grades[i] + " ");
-//                            }
-//                            writer.write("\n");
-//                        }
-//                        writer.close();
-//                        JOptionPane.showMessageDialog(null, "Готово");
-//                    } catch (IOException ex) {
-//                        JOptionPane.showMessageDialog(null, "Ошибка");
-//                    }
+        readItem.addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+                    JFileChooser fileChooser = new JFileChooser();
+                    int result = fileChooser.showSaveDialog(null);
+                    if (result == JFileChooser.APPROVE_OPTION) {
+                        File file = fileChooser.getSelectedFile();
+                        try (Scanner scanner = new Scanner(file)) {
+                            while (scanner.hasNextLine()) {
+                                String line = scanner.nextLine();
+                                String[] fields = line.split(" ");
+                                String name = fields[0];
+                                int group = Integer.parseInt(fields[1]);
+                                int[] grades = new int[5];
+                                for (int i = 0; i < 5; i++) {
+                                    grades[i] = Integer.parseInt(fields[2 + i]);
+                                }
+                            //    double averageGrade = getAverageGrade();
+                                Student student = new Student(name, group, grades);
+                                students.add(student);
+                                model.addRow(new Object[]{
+                                        name,
+                                        group,
+                                        student.getAverageGrade()
+                                });
+                            }
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
                 }
-            }
-        });
+            });
+
         // Инициализация коллекции студентов
         students = new ArrayList<Student>();
     }
