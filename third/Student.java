@@ -43,15 +43,7 @@ class Student implements Comparable<Student> {
         return sum / 5;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "surname='" + name + '\'' +
-                ", group=" + group +
-                ", grades=" + Arrays.toString(grades) +
-                ", average grade = " + getAverageGrade() +
-                '}';
-    }
+
     @Override
     public int compareTo(Student other) {
         return Integer.compare(group, other.group);
