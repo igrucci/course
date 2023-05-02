@@ -1,27 +1,29 @@
 import java.util.Scanner;
-
 class CBookCard {
-    private String author;
-    private String title;
-    private String publisher;
-    private int year;
-    private String isbn;
-    private double rate;
-    private String comment;
+    private String author; // автор
+    private String title; // название
+    private String publisher; // издательство
+    private int year; // год издания
+    private String isbn; // ISBN
+    private double rate; // рейтинг
+    private String comment; // комментарий
 
+    // конструктор
     public CBookCard(String author, String title, String publisher, int year, String isbn) {
         this.author = author;
         this.title = title;
         this.year = year;
         this.isbn = isbn;
         this.publisher = publisher;
-        this.comment = comment;
+        this.comment = comment; // комментарий не задан в конструкторе
     }
 
+    // конструктор по умолчанию
     public CBookCard() {
 
     }
 
+    // методы для доступа к полям
     public String getAuthor() {
         return author;
     }
@@ -29,7 +31,6 @@ class CBookCard {
     public void setAuthor(String author) {
         this.author = author;
     }
-
 
     public String getTitle() {
         return title;
@@ -39,7 +40,6 @@ class CBookCard {
         this.title = title;
     }
 
-
     public String getPublisher() {
         return publisher;
     }
@@ -47,7 +47,6 @@ class CBookCard {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
 
     public int getYear() {
         return year;
@@ -57,7 +56,6 @@ class CBookCard {
         this.year = year;
     }
 
-
     public String getISBN() {
         return isbn;
     }
@@ -65,7 +63,6 @@ class CBookCard {
     public void setISBN(String isbn) {
         this.isbn = isbn;
     }
-
 
     public double getRate() {
         return rate;
@@ -83,13 +80,15 @@ class CBookCard {
         this.comment = comment;
     }
 
+    // метод toString для вывода карточки книги в строковом формате
     @Override
     public String toString() {
         return "Автор: " + author + "; Заглавие: " + title + "; Издательство: " + publisher +
-                "; Год издания: " + year + ", ISBN: " + isbn.substring(0, 3) + " " + isbn.substring(4, 5) + " " + isbn.substring(6, 8) + " " + isbn.substring(9,15) + " " + isbn.substring(16)+ "; Рейтинг: " + rate;
-    }
+                "; Год издания: " + year + ", ISBN: " + isbn.substring(0, 3) + " " + isbn.substring(4, 5) + " " + isbn.substring(6, 8) + " " + isbn.substring(9, 15) + " " + isbn.substring(16) + "; Рейтинг: " + rate;
+        }
 
-    public static class Main {
+// класс Main
+public static class Main {
 
         public static void main(String[] args) {
             // Создание двух статических объектов
@@ -99,8 +98,8 @@ class CBookCard {
             CBookCard book2 = new CBookCard("Михаила Булгаков", "Мастер и Маргарита", "Азбука-классика", 2014, "978-4-17-258521-1");
             book2.setRate(3.5);
 
+            // Ввод данных о книгах с клавиатуры
             Scanner scanner = new Scanner(System.in);
-
             int n;
             do {
                 System.out.print("Введите размер(0-5): ");
@@ -110,7 +109,6 @@ class CBookCard {
                 }
                 n = scanner.nextInt();
             } while (( n < 0) || ( n > 5));
-            scanner.nextLine();
             CBookCard[] books = new CBookCard[n + 2];
             books[0] = book1;
             books[1] = book2;

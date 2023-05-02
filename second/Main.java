@@ -3,13 +3,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите количество super stones");
+        System.out.println("Введите количество обычных камней");
         int n = scanner.nextInt();
 
-
+        // создаем массив объектов Ordinary
         Ordinary[] spstones = new Ordinary[n];
         for (int i = 0; i < n; i++) {
             System.out.println("==============================================================");
+
+            // вводим название камня
             System.out.print("Введите названия камня " + i + ": ");
             while (scanner.hasNext()) {
                 if (scanner.hasNextInt()) {
@@ -19,10 +21,9 @@ public class Main {
                     break;
                 }
             }
-
             String name = scanner.next();
 
-
+            // вводим вес камня
             System.out.print("Введите вес камня " + i + ": ");
             while (!scanner.hasNextDouble()) {
                 System.out.print("ошибка ввода, введите еще раз: ");
@@ -31,8 +32,8 @@ public class Main {
             double weight = scanner.nextDouble();
             scanner.nextLine();
 
-
-            System.out.print("Введите параметр1 " + i + ": ");
+            // вводим твердость камня
+            System.out.print("Введите твердость " + i + ": ");
             while (scanner.hasNext()) {
                 if (scanner.hasNextInt()) {
                     System.out.print("ошибка ввода, введите еще раз: ");
@@ -41,8 +42,9 @@ public class Main {
                     break;
                 }
             }
-            String parametr1 = scanner.next();
+            String hardness = scanner.next();
 
+            // вводим цену за карат камня
             System.out.print("Введите цену за карат " + i + ": ");
             while (!scanner.hasNextDouble()) {
                 System.out.print("ошибка ввода, введите еще раз: ");
@@ -51,21 +53,23 @@ public class Main {
             double price_per_carat = scanner.nextDouble();
             scanner.nextLine();
 
-
-
-            spstones[i] = new Ordinary(name, parametr1, weight, price_per_carat);
-
+            // создаем объект Ordinary и добавляем его в массив
+            spstones[i] = new Ordinary(name, hardness, weight, price_per_carat);
         }
 
         System.out.println("==============================================================");
 
+        // вводим количество полудрагоценных камней
         Scanner scannerspsp = new Scanner(System.in);
-        System.out.println("Введите количество super stones");
+        System.out.println("Введите количество полудрагоценных");
         int m = scannerspsp.nextInt();
 
+        // создаем массив объектов SemiPrecious
         SemiPrecious[] spspstones = new SemiPrecious[m];
         for (int k = 0; k < m; k++) {
             System.out.println("==============================================================");
+
+            // вводим название камня
             System.out.print("Введите название " + k + ": ");
             while (scanner.hasNext()) {
                 if (scanner.hasNextInt()) {
@@ -77,7 +81,7 @@ public class Main {
             }
             String name = scanner.next();
 
-
+            // вводим вес камня
             System.out.print("Введите вес " + k + ": ");
             while (!scanner.hasNextDouble()) {
                 System.out.print("ошибка ввода, введите еще раз: ");
@@ -86,8 +90,8 @@ public class Main {
             double weight = scanner.nextDouble();
             scanner.nextLine();
 
-
-            System.out.print("Введите параметр2 " + k + ": ");
+            // вводим прозрачность камня
+            System.out.print("Введите прозрачность " + k + ": ");
             while (scanner.hasNext()) {
                 if (scanner.hasNextInt()) {
                     System.out.print("ошибка ввода, введите еще раз: ");
@@ -96,8 +100,9 @@ public class Main {
                     break;
                 }
             }
-            String parametr2 = scanner.next();
+            String transparency = scanner.next();
 
+            // вводим цену за карат камня
             System.out.print("Введите цену за карат " + k + ": ");
             while (!scanner.hasNextDouble()) {
                 System.out.print("ошибка ввода, введите еще раз: ");
@@ -105,28 +110,23 @@ public class Main {
             }
             double price_per_carat = scanner.nextDouble();
             scanner.nextLine();
-
-            SemiPrecious spspstone = new SemiPrecious(name, parametr2, weight, price_per_carat);
-
-            spspstone.setName(name);
-            spspstone.setTransparency(parametr2);
-            spspstone.setWeight(weight);
-            spspstone.setPrice_per_carat(price_per_carat);
-
-            spspstones[k] = new SemiPrecious(name, parametr2, weight, price_per_carat);
+            // создаем объект SemiPrecious и добавляем его в массив
+            spspstones[k] = new SemiPrecious(name, transparency, weight, price_per_carat);
 
         }
 
         System.out.println("==============================================================");
 
+        // вводим количество драгоценных камней
         Scanner scannertb = new Scanner(System.in);
-        System.out.println("Введите количество the best stones");
+        System.out.println("Введите количество драгоценных");
         int p = scannertb.nextInt();
 
 
         Precious[] tbstones = new Precious[p];
         for (int j = 0; j < p; j++) {
             System.out.println("==============================================================");
+            // вводим название камня
             System.out.print("Введите название " + j + ": ");
             while (scanner.hasNext()) {
                 if (scanner.hasNextInt()) {
@@ -137,8 +137,7 @@ public class Main {
                 }
             }
             String name = scanner.next();
-
-
+            // вводим вес камня
             System.out.print("Введите вес " + j + ": ");
             while (!scanner.hasNextDouble()) {
                 System.out.print("ошибка ввода, введите еще раз: ");
@@ -147,8 +146,8 @@ public class Main {
             double weight = scanner.nextDouble();
             scanner.nextLine();
 
-
-            System.out.print("Введите параметр3" + j + ": ");
+            // вводим цвет камня
+            System.out.print("Введите цвет" + j + ": ");
             while (scanner.hasNext()) {
                 if (scanner.hasNextInt()) {
                     System.out.print("ошибка ввода, введите еще раз: ");
@@ -157,8 +156,9 @@ public class Main {
                     break;
                 }
             }
-            String parametr3 = scanner.next();
+            String color = scanner.next();
 
+            // вводим цену за карат камня
             System.out.print("Введите цену за карат " + j + ": ");
             while (!scanner.hasNextDouble()) {
                 System.out.print("ошибка ввода, введите еще раз: ");
@@ -167,24 +167,24 @@ public class Main {
             double price_per_carat = scanner.nextDouble();
             scanner.nextLine();
 
-            tbstones[j] = new Precious(name, parametr3, weight, price_per_carat);
+            tbstones[j] = new Precious(name, color, weight, price_per_carat);
         }
 
         System.out.println("==============================================================");
 
 
         // Вывод информации
-        System.out.println("Super Stone:");
+        System.out.println("Обычные камни:");
         for (Ordinary stone : spstones) {
             System.out.println(stone.toString());
             System.out.println("--------------------------------------------------------------");
         }
-        System.out.println("Super Super Stones:");
+        System.out.println("Полудрагоценные камни:");
         for (SemiPrecious stone : spspstones) {
             System.out.println(stone.toString());
             System.out.println("--------------------------------------------------------------");
         }
-        System.out.println("The Best Stones:");
+        System.out.println("Драгоценные камни:");
         for (Precious stone : tbstones) {
             System.out.println(stone.toString());
             System.out.println("--------------------------------------------------------------");
@@ -197,13 +197,13 @@ public class Main {
         Scanner scanforchoice = new Scanner(System.in);
 
         int choice;
-
+        // меню для выбора камня в ожерелье
         do {
             System.out.println("Меню:");
-            System.out.println("1. super");
-            System.out.println("2. supersuper");
-            System.out.println("3. thebest");
-            System.out.println("0. calculate");
+            System.out.println("1. обычные");
+            System.out.println("2. полудрагоценные");
+            System.out.println("3. драгоценные");
+            System.out.println("0. ожерелье");
 
             System.out.print("Выберите: ");
             choice =scanforchoice.nextInt();
@@ -211,7 +211,7 @@ public class Main {
             switch (choice) {
                 case 1 -> {
                     Scanner scansp = new Scanner(System.in);
-                    System.out.print("Введите название(SuperStone): ");
+                    System.out.print("Введите название(обычные): ");
                     String NameForNecklace1 = scansp.nextLine();
                     boolean isFind = false;
                     for (Ordinary stone : spstones) {
@@ -231,7 +231,7 @@ public class Main {
                 }
                 case 2 -> {
                     Scanner scanspsp = new Scanner(System.in);
-                    System.out.print("Введите название(SuperSuperStone): ");
+                    System.out.print("Введите название(полудрагоценные): ");
                     String NameForNecklace2 = scanspsp.nextLine();
                     boolean isFind = false;
                     for (SemiPrecious stone : spspstones) {
@@ -251,7 +251,7 @@ public class Main {
                 }
                 case 3 -> {
                     Scanner scantb = new Scanner(System.in);
-                    System.out.print("Введите название(TheBestStone): ");
+                    System.out.print("Введите название(драгоценные): ");
                     String NameForNecklace3 = scantb.nextLine();
                     boolean isFind = false;
                     for (Precious stone : tbstones) {
@@ -273,6 +273,7 @@ public class Main {
                 default -> System.out.println("Введите еще раз");
             }
         } while (choice != 0);
+        // вывод информации об ожерелье
         System.out.println("Ожерелье:");
         System.out.println("состоит из: " + allnames);
         System.out.println("итоговый вес: " + totalWeight);
