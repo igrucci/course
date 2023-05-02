@@ -11,22 +11,27 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+// Определяем класс GUI, наследующий класс JFrame
 public class GUI extends JFrame {
+    // Объявляем переменные
     private JTable table;
     private DefaultTableModel model;
     private ArrayList<Student> students;
 
+    // Конструктор класса GUI
     public GUI() {
-
+        // Устанавливаем заголовок окна
         setTitle("Студенты");
+        // Устанавливаем размер окна
         setSize(600, 500);
-
+        // Устанавливаем операцию закрытия окна
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Размещаем окно по центру экрана
         setLocationRelativeTo(null);
 
         // Создание таблицы
         String[] columns = {"Фамилия", "Номер группы", "Средний балл"};
-        model = new DefaultTableModel(columns, 0);//изначально задано сколько. тк пусто то 0
+        model = new DefaultTableModel(columns, 0);
         table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -35,21 +40,24 @@ public class GUI extends JFrame {
         JPanel buttonPanel = new JPanel(new GridLayout(6, 1, 5, 5));
         getContentPane().add(buttonPanel, BorderLayout.EAST);
 
+        // Создание кнопки "Добавить"
         JButton addButton = new JButton("Добавить");
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Выводим диалоговое окно для ввода фамилии
                 String name = JOptionPane.showInputDialog("Введите фамилию");
+                // Выводим диалоговое окно для ввода номера группы, пока не будет введено число
                 int groupNumber = 0;
                 while (true) {
                     try {
                         groupNumber = Integer.parseInt(JOptionPane.showInputDialog("Введите номер группы"));
                         break;
                     } catch (NumberFormatException ex) {
-
                         JOptionPane.showMessageDialog(null, "Введите число");
                     }
                 }
 
+                // Создаем массив для оценок и заполняем его, пока не будут введены корректные значения
                 int[] grades = new int[5];
                 for (int i = 0; i < 5; i++) {
                     while (true) {
@@ -68,6 +76,7 @@ public class GUI extends JFrame {
                     }
                 }
 
+                // Добавляем студента в список
                 addStudent(name, groupNumber, grades);
             }
         });
@@ -101,7 +110,7 @@ public class GUI extends JFrame {
                         }
                     }
                 }
-
+                // Очистить таблицу
                 model.setRowCount(0);
 
                 for (Student student : filteredStudents) {
@@ -161,7 +170,6 @@ public class GUI extends JFrame {
         JButton cancelButton = new JButton("Показать всех");
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Очистить таблицу
                 model.setRowCount(0);
                 ArrayList<Student> originalStudents = new ArrayList<Student>(students);
                 // Отобразить исходный список студентов
@@ -299,7 +307,7 @@ public class GUI extends JFrame {
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-   //     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         GUI studentGUI = new GUI();
         studentGUI.setVisible(true);
 

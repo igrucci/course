@@ -1,16 +1,19 @@
-import java.util.Arrays;
-
+// Объявление класса "Студент", реализующего интерфейс "Comparable"
 class Student implements Comparable<Student> {
-    private String name;
-    private int group;
-    private int[] grades;
 
+    // Объявление приватных полей класса
+    private String name; // Имя студента
+    private int group; // Номер группы
+    private int[] grades; // Оценки студента
+
+    // Конструктор класса, инициализирующий поля класса
     public Student(String name, int group, int[] grades){
         this.name = name;
         this.group = group;
         this.grades = grades;
     }
 
+    // Геттеры и сеттеры для полей класса
     public String getName() {
         return name;
     }
@@ -35,6 +38,7 @@ class Student implements Comparable<Student> {
         this.grades = grades;
     }
 
+    // Метод для расчета средней оценки студента
     public double getAverageGrade() {
         double sum = 0;
         for (double grade : grades) {
@@ -43,7 +47,8 @@ class Student implements Comparable<Student> {
         return sum / 5;
     }
 
-
+    // Реализация метода интерфейса "Comparable"
+    // Данный метод сравнивает студентов по номеру группы
     @Override
     public int compareTo(Student other) {
         return Integer.compare(group, other.group);
